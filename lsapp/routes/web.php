@@ -21,3 +21,15 @@ Route::get('/about', [PagesController::class, 'about']);
 
 Route::get('/services', [PagesController::class, 'services']);
 
+
+
+
+
+// Single Listing
+
+Route::get('/listings/{id}', function ($id) {
+    return view('listing', [
+        'listing' => Listing::find($id)
+    ]);
+});
+
