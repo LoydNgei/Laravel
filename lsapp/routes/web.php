@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PagesController;
+use App\Models\Listing;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,21 +16,21 @@ use App\Http\Controllers\PagesController;
 |
 */
 
+// All Listings
 
-Route::get('/', [PagesController::class, 'index']);
-
-Route::get('/about', [PagesController::class, 'about']);
-
-Route::get('/services', [PagesController::class, 'services']);
-
-
+Route::get('/', function () {
+    return view('pages.listings', [
+        'heading' => 'Latest Listings',
+        'listing' => Listing::all()
+    ]);
+});
 
 
 
 // Single Listing
 
 Route::get('/listings/{id}', function ($id) {
-    return view('listing', [
+    return view('pages.listing', [
         'listing' => Listing::find($id)
     ]);
 });
