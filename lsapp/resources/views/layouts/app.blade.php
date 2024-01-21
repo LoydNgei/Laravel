@@ -9,9 +9,8 @@
 
     </head>
     <body>
-        @include('inc.navbar');
-        <div class="container">
-            @yield('content')
-        </div>
+        <h1>Laragigs</h1>
+        {{-- VIEW OUTPUT --}}
+        @yield('content')
     </body>
 </html>
