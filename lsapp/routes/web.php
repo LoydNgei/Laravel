@@ -21,7 +21,7 @@ use App\Models\Listing;
 Route::get('/', function () {
     return view('pages.listings', [
         'heading' => 'Latest Listings',
-        'listing' => Listing::all()
+        'listings' => Listing::all()
     ]);
 });
 
