@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
 
+use App\Http\Controllers\ListingController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,22 +18,27 @@ use App\Models\Listing;
 |
 */
 
+
+
+// COMMON RESOURCE ROUTES
+
+// index - show all listings
+// show - show single listings
+// create - show form to create new listing
+// store - Store new listing
+// edit - show form to edit listing
+// update - update listing
+// destroy - Delete listing
+
+
+
 // All Listings
 
-Route::get('/', function () {
-    return view('pages.listings', [
-        'heading' => 'Latest Listings',
-        'listings' => Listing::all()
-    ]);
-});
+Route::get('/', [ListingController::class, 'index']);
 
 
 
 // Single Listing -> ROUTE BINDING TECHNIQUE
 
-Route::get('/listings/{listing}', function(Listing $listing) {
-    return view('pages.listing', [
-        'listing' => $listing
-    ]);
-});
+Route::get('/listings/{listing}', [ListingController::class, 'show']);;
 
