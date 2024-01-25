@@ -27,11 +27,11 @@ Route::get('/', function () {
 
 
 
-// Single Listing
+// Single Listing -> ROUTE BINDING TECHNIQUE
 
-Route::get('/listings/{id}', function ($id) {
+Route::get('/listings/{listing}', function(Listing $listing) {
     return view('pages.listing', [
-        'listing' => Listing::find($id)
+        'listing' => $listing
     ]);
 });
 
