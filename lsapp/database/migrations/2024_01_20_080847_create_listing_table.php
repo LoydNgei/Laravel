@@ -11,17 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('listing', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('tags');
-            $table->string('company');
-            $table->string('location');
-            $table->string('email');
-            $table->string('website');
-            $table->string('description');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('listings')) {
+            Schema::create('listings', function (Blueprint $table) {
+                $table->id();
+                $table->string('title');
+                $table->string('tags');
+                $table->string('company');
+                $table->string('location');
+                $table->string('email');
+                $table->string('website');
+                $table->string('description', 500);
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('listing');
+        Schema::dropIfExists('listings');
     }
 };
