@@ -36,7 +36,15 @@ use App\Http\Controllers\ListingController;
 Route::get('/', [ListingController::class, 'index']);
 
 
+
+// Show create form
+
+Route::get('/listings/create', [ListingController::class, 'create']);
+
+
+// Post create form
+Route::post('/listings/', [ListingController::class, 'store']);
+
 // Single Listing -> ROUTE BINDING TECHNIQUE
 
-Route::get('/listings/{listing}', [ListingController::class, 'show']);;
-
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
