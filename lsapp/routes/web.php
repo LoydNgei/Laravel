@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Listing;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
 
 
@@ -32,19 +33,38 @@ use App\Http\Controllers\ListingController;
 
 
 // All Listings
-
 Route::get('/', [ListingController::class, 'index']);
 
 
 
 // Show create form
-
 Route::get('/listings/create', [ListingController::class, 'create']);
 
 
 // Post create form
 Route::post('/listings/', [ListingController::class, 'store']);
 
+
+//Edit form
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+
+
+// Update Listing
+Route::put('/listings/{listing}', [ListingController::class, 'update'])->name('listing.update');
+
+
+// Delete Listing
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->name('listing.destroy');
+
+
 // Single Listing -> ROUTE BINDING TECHNIQUE
 
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
+// User Register form
+Route::get('/register', [UserController::class, 'create']);
+
+
+// Create new user
+
+Route::post('/users', [UserController::class, 'store']);
