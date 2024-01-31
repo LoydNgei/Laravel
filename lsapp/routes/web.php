@@ -38,27 +38,36 @@ Route::get('/', [ListingController::class, 'index']);
 
 
 // Show create form
-Route::get('/listings/create', [ListingController::class, 'create']);
+Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 
 
-// Post create form
-Route::post('/listings/', [ListingController::class, 'store']);
+// Store Listing Data
+Route::post('/listings/', [ListingController::class, 'store'])->middleware('auth');
 
 
-//Edit form
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+// Show Edit form
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
 
 // Update Listing
-Route::put('/listings/{listing}', [ListingController::class, 'update'])->name('listing.update');
+Route::put('/listings/{listing}', [ListingController::class, 'update'])->name('listing.update')->middleware('auth');
 
 
 // Delete Listing
-Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->name('listing.destroy');
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->name('listing.destroy')->middleware('auth');
+
+// Manage Listing
+
+Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
+
+
+// Single Listing -> ROUTE BINDING TECHNIQUE
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
 
 
 // User Register form
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 
 // Create new user
@@ -66,5 +75,16 @@ Route::get('/register', [UserController::class, 'create']);
 Route::post('/users', [UserController::class, 'store']);
 
 
-// Single Listing -> ROUTE BINDING TECHNIQUE
-Route::get('/listings/{listing}', [ListingController::class, 'show']);
+// Logout User
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+
+
+// Show login form
+
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+
+
+// Login User
+
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
