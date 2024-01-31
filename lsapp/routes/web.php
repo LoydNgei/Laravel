@@ -57,10 +57,6 @@ Route::put('/listings/{listing}', [ListingController::class, 'update'])->name('l
 Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->name('listing.destroy');
 
 
-// Single Listing -> ROUTE BINDING TECHNIQUE
-
-Route::get('/listings/{listing}', [ListingController::class, 'show']);
-
 // User Register form
 Route::get('/register', [UserController::class, 'create']);
 
@@ -68,3 +64,7 @@ Route::get('/register', [UserController::class, 'create']);
 // Create new user
 
 Route::post('/users', [UserController::class, 'store']);
+
+
+// Single Listing -> ROUTE BINDING TECHNIQUE
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
