@@ -49,21 +49,21 @@
         </x-card>
     </div>
 
-{{-- 
-    <x-card class="mt-4 p-2 flex space-x-6">
-        <a href="/listings/{{$listing->id}}/edit">
-            <i class="fa-solid fa-pencil"> Edit</i>
-        </a>
+    {{-- 
+        <x-card class="mt-4 p-2 flex space-x-6">
+            <a href="/listings/{{$listing->id}}/edit">
+                <i class="fa-solid fa-pencil"> Edit</i>
+            </a>
 
 
-        <form method="POST" action="{{ route('listing.destroy', ["listing" => $listing]) }}">
-            @csrf
-            @method('DELETE')
-            <button class="text-red-500"><i class="fa-solid fa-trash"></i>Delete</button>
+            <form method="POST" action="{{ route('listing.destroy', ["listing" => $listing]) }}">
+                @csrf
+                @method('DELETE')
+                <button class="text-red-500"><i class="fa-solid fa-trash"></i>Delete</button>
 
-        </form> 
+            </form> 
 
-    </x-card>--}}
+        </x-card>--}}
 
 
 </x-layout>
